@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <RollingFile name="ScoreRc" fileName="${path}/load-score-rc.log"
+                     filePattern="${path}/historic/load-score-rc-%d{yyyy-MM-dd}.log">
+            <JsonTemplateLayout eventTemplateUri="classpath:CustomLayout.json">
+                <EventTemplateAdditionalField key="process" value="load-score-rc"/>
+            </JsonTemplateLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"	modulate="true" />
+            </Policies>
+            <DefaultRolloverStrategy>
+                <Delete basePath="${path}/historic/">
+                    <IfFileName glob="load-score-rc-*.log"/>
+                    <IfAccumulatedFileCount exceeds="7"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="load_score_rc" level="info" additivity="false">
+            <appender-ref ref="ScoreRc"/>
+        </Logger>
+    </Loggers>
+</Configuration>

@@ -1,0 +1,1 @@
+truncate table p_daas_data.score_rc_1 drop storage

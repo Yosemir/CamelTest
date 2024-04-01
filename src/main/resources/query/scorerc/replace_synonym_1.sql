@@ -1,0 +1,1 @@
+CREATE OR REPLACE SYNONYM p_daas_data.score_rc FOR p_daas_data.score_rc_1

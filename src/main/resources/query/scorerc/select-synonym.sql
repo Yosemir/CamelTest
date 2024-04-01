@@ -1,0 +1,1 @@
+select table_name from all_synonyms where synonym_name='SCORE_RC' and table_owner='P_DAAS_DATA'

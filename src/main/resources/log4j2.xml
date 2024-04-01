@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Properties>
+		<Property name="path">/srv/BigData/mm3/batch-log/nrt-scoring</Property>
+	</Properties>
+
+	<Appenders>
+		<Console name="stdout" target="SYSTEM_OUT">
+     <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg{nolookups}%n" />
+		</Console>
+	</Appenders>
+
+	<Loggers>
+		<Root level="info" additivity="false">
+			<AppenderRef ref="stdout" />
+		</Root>
+	</Loggers>
+</Configuration>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <RollingFile name="ScoreRcTransfer" fileName="${path}/score-rc-transfer-route.log"
+                     filePattern="${path}/historic/score-rc-transfer-route-%d{yyyy-MM-dd}.log">
+            <JsonTemplateLayout eventTemplateUri="classpath:CustomLayout.json">
+                <EventTemplateAdditionalField key="process" value="score-rc-transfer-route"/>
+            </JsonTemplateLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"	modulate="true" />
+            </Policies>
+            <DefaultRolloverStrategy>
+                <Delete basePath="${path}/historic/">
+                    <IfFileName glob="score-rc-transfer-route-*.log"/>
+                    <IfAccumulatedFileCount exceeds="7"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="score_rc_transfer_route" level="info" additivity="false">
+            <appender-ref ref="ScoreRcTransfer"/>
+        </Logger>
+    </Loggers>
+</Configuration>
